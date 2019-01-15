@@ -25,7 +25,7 @@ if(isset($_GET['filter'])){
 	<?php include('templates/header.html'); ?>
 	<h1>This is the movie site</h1>
 	<div class="cont">
-<?php $results = getAll('tbl_movies');
+<?php 
 while($row = $results->fetch(PDO::FETCH_ASSOC)):?>
 <li>
 <img id="imgCovers" src="images/<?php echo $row['movies_cover'];?>" alt="<?php echo $row['movies_title'];?>">

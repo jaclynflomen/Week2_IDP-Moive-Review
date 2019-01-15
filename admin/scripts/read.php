@@ -33,12 +33,11 @@ function getSingle($tbl, $col, $value) {
 function filterResults($tbl, $tbl_2, $tbl_3, $col, $col2, $col3, $filter) {
 	include('connect.php');
 	$queryFilter = 'SELECT * FROM '.$tbl. ' as a, ';
-	$queryFilter = $tbl_2. ' as b, ';
-	$queryFilter = $tbl_3. ' as c, ';
-	$queryFilter = 'WHERE a. '.$col. ' = c '.$col;
-	$queryFilter = ' AND b. '.$col2. ' = c '.$col2;
-	$queryFilter = ' AND b. '.$col3. ' = "'. $filter.'"';
-
+	$queryFilter.= $tbl_2. ' as b, ';
+	$queryFilter.= $tbl_3. ' as c ';
+	$queryFilter.= 'WHERE a. ' .$col. ' = c. ' .$col;
+	$queryFilter.= ' AND b. ' .$col2. ' = c. ' .$col2;
+	$queryFilter.= ' AND b. ' .$col3. '= "' . $filter.'"';
 	$runFilter = $pdo->query($queryFilter);
 	if($runFilter){
 		return $runFilter;
