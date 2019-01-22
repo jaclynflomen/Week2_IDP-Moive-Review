@@ -1,5 +1,12 @@
-<?php
-    var_dump($_POST);
+<?php require_once('scripts/config.php');
+    if(empty($_POST['username']) || empty($_POST['password'])){
+        $message = 'Missing Fields';
+    }else{
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $message = login($username, $password);
+    }
 ?>
 
 
