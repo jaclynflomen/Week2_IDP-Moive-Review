@@ -1,8 +1,9 @@
 <?php 
 
-//To Do: Login Needed
-
-
+    require_once('scripts/config.php');
+    confirm_logged_in();
+    
+    //To Do: Login Needed
 
 ?>
 
