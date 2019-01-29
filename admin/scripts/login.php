@@ -34,9 +34,14 @@ function login($username, $password){
 
         while($found_user = $get_user_set->fetch(PDO::FETCH_ASSOC)){
             $id = $found_user['user_id'];
-
-            echo 'User ID: '.$id. 'Logged in!';
+            $_SESSION['user_id'] = $id;
+            $_SESSION['user_name'] = $found_user['user_name'];
         }
+
+        redirect_to('index.php');
+    }else{
+        $message = 'Login Failed!';
+        return $message;
     }
 
 }
