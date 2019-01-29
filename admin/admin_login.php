@@ -20,17 +20,21 @@
 </head>
 <body>
 
-<form action="admin_login.php" method="post"> <!-- use post to keep username and pw private-->
-    <label for="username">Username:
+    <?php if(!empty($message)):?>
+    <p><?php echo $message;?></p>
+    <?php endif;?>
+
+    <form action="admin_login.php" method="post"> <!-- use post to keep username and pw private-->
+         <label for="username">Username:
         <input type="text" name="username" value="" required>
-    </label>
-    <br>
-    <label for="password">Password:
+        </label>
+        <br>
+        <label for="password">Password:
         <input type="password" name="password" value="" required>
-    </label>
-    <br>
-    <button type="submit">Submit</button>
-</form>
+        </label>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
     
 </body>
 </html>

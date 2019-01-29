@@ -38,6 +38,11 @@ function login($username, $password){
             $_SESSION['user_name'] = $found_user['user_name'];
         }
 
+        if(empty($id)) {
+            $message = 'Login Failed!';
+            return $message;
+        }
+
         redirect_to('index.php');
     }else{
         $message = 'Login Failed!';
