@@ -24,6 +24,29 @@
     <p><?php echo $message;?></p>
     <?php endif;?>
 
+    <?php
+ 
+ // your auth method
+ function auth()
+ {
+     return 0;
+ }
+    
+ if(!empty($username) && !empty($password)){
+     if(!auth())
+     {
+         //Login attempts
+         $_SESSION['attempts'] += 1;
+         echo "Failed to log in. Attempt: {$_SESSION['attempts']} of 3.";
+     }
+ } else {
+     
+ }
+  
+ if($_SESSION['attempts'] < 3)
+ {
+ 
+ ?>
     <form action="admin_login.php" method="post"> <!-- use post to keep username and pw private-->
          <label for="username">Username:
         <input type="text" name="username" value="" required>
@@ -36,5 +59,13 @@
         <button type="submit">Submit</button>
     </form>
     
+    <?php
+} else {
+    echo "<br /> <b>Your account has been locked.</b>";
+    
+}
+?>
+
+
 </body>
 </html>

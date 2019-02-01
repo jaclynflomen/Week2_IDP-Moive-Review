@@ -4,7 +4,6 @@
     confirm_logged_in();
     
     //To Do: Login Needed
-
 ?>
 
 <!DOCTYPE html>
@@ -29,5 +28,13 @@
             <li><a href="scripts/caller.php?caller_id=logout">Sign Out</a></li>
         </ul>
     </nav>
+
+    <p>Last Log In: <?php echo $_SESSION['user_date']; ?></p>
+
+    <p><?php 
+    $hour = date('H');
+    $dayTerm = ($hour > 17) ? "Evening" : ($hour > 12) ? "Afternoon" : "Morning";
+    echo "Good " . $dayTerm; 
+    ?></p>
 </body>
 </html>
