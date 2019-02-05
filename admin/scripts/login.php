@@ -36,6 +36,18 @@ function login($username, $password){
             $id = $found_user['user_id'];
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name'] = $found_user['user_name'];
+
+
+            //To Do: use the right SQL query to update the user_ip column to $ip within tbl_user table
+            //Dont forget to bind it
+            $update_ip_query = 'UPDATE tbl_user SET user_ip=:ip WHERE user_id=:id';
+            $update_ip_set = $pdo->prepare($update_ip_query);
+            $update_ip_set->execute(
+                array(
+                    ':id'=>$id,
+                    ':ip'=>$ip
+                )
+            );
         }
 
         if(empty($id)) {
